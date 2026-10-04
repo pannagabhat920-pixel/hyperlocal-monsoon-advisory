@@ -1,0 +1,41 @@
+{
+  "common": {
+    "title": "ಪನ್ನಗ ಮುಂಗಾರು ಕೃಷಿ ಸಲಹೆ",
+    "subtitle": "ಅತಿ-ಸ್ಥಳೀಯ ಮುಂಗಾರು ಮುನ್ಸೂಚನೆ ಮತ್ತು ಕೃಷಿ ಸಲಹಾ ವ್ಯವಸ್ಥೆ",
+    "dataHonesty": "ದತ್ತಾಂಶ ಪ್ರಾಮಾಣಿಕತೆ ಸೂಚನೆ: ಮಾದರಿಯು ಸಿಮ್ಯುಲೇಟೆಡ್ ದತ್ತಾಂಶದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿದೆ.",
+    "simulated": "ಸಿಮ್ಯುಲೇಟೆಡ್ (ಪ್ರಾಯೋಗಿಕ)",
+    "live": "ನೇರ ಪ್ರಸಾರ (ಲೈವ್)",
+    "hindcast": "ಹಿಂದಿನ ದಾಖಲೆಗಳು"
+  },
+  "stages": {
+    "not_started": "ಪ್ರಾರಂಭವಾಗಿಲ್ಲ",
+    "sown": "ಬಿತ್ತನೆ ಮಾಡಲಾಗಿದೆ",
+    "vegetative": "ಸಸ್ಯ ಬೆಳವಣಿಗೆ",
+    "flowering_podding": "ಹೂವು ಮತ್ತು ಕಾಯಿ ಹಂತ",
+    "harvest_ready": "ಕೊಯ್ಲಿಗೆ ಸಿದ್ಧ"
+  },
+  "auth": {
+    "enterOtp": "೬-ಅಂಕಿಯ ಒಟಿಪಿ ನಮೂದಿಸಿ",
+    "verifyAndEnter": "ದೃಢೀಕರಿಸಿ ಮತ್ತು ಮುಂದುವರಿಯಿರಿ",
+    "mobileNumber": "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ",
+    "sendOtp": "ಎಸ್ಎಂಎಸ್ ಮೂಲಕ ಒಟಿಪಿ ಕಳುಹಿಸಿ"
+  },
+  "officer": {
+    "portalTitle": "ಕೃಷಿ ವಿಸ್ತರಣಾಧಿಕಾರಿ ಪೋರ್ಟಲ್",
+    "queueTitle": "ಬಾಕಿ ಇರುವ ಕೃಷಿ ಸಲಹೆಗಳ ಪಟ್ಟಿ",
+    "approveTts": "ಅನುಮೋದಿಸಿ ಮತ್ತು ಆಡಿಯೋ ರಚಿಸಿ",
+    "dryRun": "ಪೂರ್ವವೀಕ್ಷಣೆ",
+    "broadcast": "ರೈತರಿಗೆ ಪ್ರಸಾರ ಮಾಡಿ"
+  },
+  "_comment": "UNREVIEWED_MACHINE_TRANSLATED_PLACEHOLDER: Automated regional placeholder strings pending formal agronomist validation.",
+  "farmer": {
+    "portalTitle": "ಪನ್ನಗ ರೈತ",
+    "cropStageTracker": "1-ಟ್ಯಾಪ್ ಬೆಳೆ ಹಂತ ಟ್ರ್ಯಾಕರ್",
+    "currentStage": "ಪ್ರಸ್ತುತ ಹಂತ",
+    "advisoriesTitle": "ಸಲಹೆಗಳು ಮತ್ತು ಎಚ್ಚರಿಕೆಗಳು",
+    "deliveryPreferences": "ವಿತರಣಾ ಆದ್ಯತೆಗಳು",
+    "whatsappConsent": "ವಾಟ್ಸಾಪ್ ಸಲಹೆಗಳು",
+    "smsConsent": "ಎಸ್ಎಂಎಸ್ ಫಾಲ್‌ಬ್ಯಾಕ್",
+    "pauseAlerts": "ಎಲ್ಲಾ ಸಲಹೆಗಳನ್ನು ವಿರಾಮಗೊಳಿಸಿ"
+  }
+}

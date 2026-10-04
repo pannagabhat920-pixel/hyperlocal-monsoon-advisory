@@ -1,0 +1,180 @@
+name: Pannaga CI Pipeline
+
+on:
+  push:
+    branches: [main, master, "release/*"]
+  pull_request:
+    branches: [main, master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend Lint, Typecheck & Tests (uv)
+    runs-on: ubuntu-latest
+    services:
+      postgis:
+        image: postgis/postgis:15-3.4
+        env:
+          POSTGRES_USER: pannaga
+          POSTGRES_PASSWORD: pannaga_test_password
+          POSTGRES_DB: pannaga_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install uv Package Manager
+        uses: astral-sh/setup-uv@v2
+        with:
+          version: "latest"
+          enable-cache: true
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: |
+          uv sync --extra dev
+
+      - name: Run Ruff Linter
+        working-directory: ./backend
+        run: |
+          uv run ruff check .
+
+      - name: Run Pytest Test Suite (80 Automated Tests)
+        working-directory: ./backend
+        env:
+          ENV: testing
+          POSTGRES_USER: pannaga
+          POSTGRES_PASSWORD: pannaga_test_password
+          POSTGRES_DB: pannaga_test
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          DATABASE_URL: postgresql+asyncpg://pannaga:pannaga_test_password@localhost:5432/pannaga_test
+          DATABASE_URL_SYNC: postgresql://pannaga:pannaga_test_password@localhost:5432/pannaga_test
+          REDIS_URL: redis://localhost:6379/0
+          SECRET_KEY: test_secret_key_minimum_32_characters_for_ci_pipeline
+          MESSAGING_PROVIDER: mock
+          DEV_OTP_ENABLED: "true"
+          PUBLIC_BASE_URL: http://localhost:8000
+        run: |
+          uv run pytest tests/ -v
+
+  frontend:
+    name: Frontend Lint, Typecheck, Unit Tests & Build (pnpm)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: |
+          pnpm install --frozen-lockfile
+
+      - name: Verify OpenAPI Schema Drift
+        working-directory: ./frontend
+        run: |
+          pnpm run gen:api:check
+
+      - name: TypeScript Typecheck
+        working-directory: ./frontend
+        run: |
+          pnpm run typecheck
+
+      - name: ESLint Check
+        working-directory: ./frontend
+        run: |
+          pnpm run lint
+
+      - name: Vitest Unit Tests
+        working-directory: ./frontend
+        run: |
+          pnpm run test
+
+      - name: Production Next.js Build
+        working-directory: ./frontend
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:8000
+        run: |
+          pnpm run build
+
+  e2e:
+    name: Full-Stack E2E & Accessibility Tests (Playwright)
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Start Full Stack with Docker Compose
+        run: |
+          docker compose -f infra/docker-compose.yml up -d --build
+          sleep 10
+
+      - name: Wait for Backend Healthz
+        run: |
+          for i in {1..30}; do
+            curl -s http://localhost:8000/healthz && break
+            echo "Waiting for backend..."
+            sleep 2
+          done
+
+      - name: Export Live Backend OpenAPI Schema & Verify Zero Drift
+        run: |
+          curl -f -s http://localhost:8000/openapi.json | python3 -m json.tool > /tmp/live_schema.json
+          python3 -m json.tool frontend/openapi.json > /tmp/committed_schema.json
+          diff -u /tmp/committed_schema.json /tmp/live_schema.json
+
+      - name: Run Playwright E2E & Axe Scans
+        run: |
+          docker run --rm --net=host \
+            -v "$PWD/frontend:/app" \
+            -w /app \
+            mcr.microsoft.com/playwright:v1.44.0-jammy \
+            npx playwright test
+
+      - name: Upload Test Screenshots & Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            frontend/tests/e2e/screenshots/
+            frontend/test-results/
+          retention-days: 7

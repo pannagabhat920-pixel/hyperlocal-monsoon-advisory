@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="40" fill="#0284c7" />
+  <circle cx="96" cy="96" r="64" fill="#0369a1" />
+  <!-- Cloud & Monsoon Raindrops -->
+  <path d="M64 105 A 24 24 0 0 1 112 90 A 20 20 0 0 1 136 112 A 16 16 0 0 1 128 128 L 64 128 A 16 16 0 0 1 64 105 Z" fill="#ffffff" />
+  <path d="M72 136 L66 150" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" />
+  <path d="M96 136 L90 150" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" />
+  <path d="M120 136 L114 150" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" />
+  <path d="M96 46 L96 66 M86 56 L106 56" stroke="#fbbf24" stroke-width="4" stroke-linecap="round" />
+</svg>

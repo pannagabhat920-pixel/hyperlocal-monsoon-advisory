@@ -1,0 +1,41 @@
+{
+  "common": {
+    "title": "Pannaga Monsoon Advisory",
+    "subtitle": "Hyperlocal Monsoon Outlook & Crop Advisory",
+    "dataHonesty": "DATA HONESTY NOTICE: Model pipeline is running with SIMULATED data.",
+    "simulated": "SIMULATED",
+    "live": "LIVE",
+    "hindcast": "HINDCAST"
+  },
+  "stages": {
+    "not_started": "Not Started",
+    "sown": "Sown",
+    "vegetative": "Vegetative",
+    "flowering_podding": "Flowering & Podding",
+    "harvest_ready": "Harvest Ready"
+  },
+  "auth": {
+    "enterOtp": "Enter 6-Digit OTP",
+    "verifyAndEnter": "Verify & Enter Dashboard",
+    "mobileNumber": "Mobile Number",
+    "sendOtp": "Send OTP via SMS"
+  },
+  "officer": {
+    "portalTitle": "Agricultural Extension Officer Portal",
+    "queueTitle": "Pending Agronomic Advisory Queue",
+    "approveTts": "Approve & Generate TTS",
+    "dryRun": "Dry Run Preview",
+    "broadcast": "Confirm & Broadcast"
+  },
+  "_comment": "UNREVIEWED_MACHINE_TRANSLATED_PLACEHOLDER: Automated regional placeholder strings pending formal agronomist validation.",
+  "farmer": {
+    "portalTitle": "Pannaga Farmer",
+    "cropStageTracker": "1-Tap Crop Status Tracker",
+    "currentStage": "Current Stage",
+    "advisoriesTitle": "Advisories & Alerts",
+    "deliveryPreferences": "Delivery Preferences",
+    "whatsappConsent": "WhatsApp Advisories",
+    "smsConsent": "SMS Fallback",
+    "pauseAlerts": "Pause All Advisories"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "common": {
+    "title": "पन्नग मानसून परामर्श",
+    "subtitle": "अति-स्थानीय मानसून पूर्वानुमान और कृषि परामर्श",
+    "dataHonesty": "डेटा सत्यनिष्ठा सूचना: मॉडल केवल सिम्युलेटेड डेटा पर चल रहा है।",
+    "simulated": "सिम्युलेटेड (काल्पनिक)",
+    "live": "सजीव (लाइव)",
+    "hindcast": "हिंडकास्ट"
+  },
+  "stages": {
+    "not_started": "शुरू नहीं हुआ",
+    "sown": "बोया गया",
+    "vegetative": "वानस्पतिक वृद्धि",
+    "flowering_podding": "फूल व फलियाँ",
+    "harvest_ready": "कटाई के लिए तैयार"
+  },
+  "auth": {
+    "enterOtp": "6-अंकों का ओटीपी दर्ज करें",
+    "verifyAndEnter": "सत्यापित करें और आगे बढ़ें",
+    "mobileNumber": "मोबाइल नंबर",
+    "sendOtp": "एसएमएस द्वारा ओटीपी भेजें"
+  },
+  "officer": {
+    "portalTitle": "कृषि विस्तार अधिकारी पोर्टल",
+    "queueTitle": "लंबित कृषि परामर्श कतार",
+    "approveTts": "स्वीकृत करें और टीटीएस ऑडियो बनाएं",
+    "dryRun": "ड्राई रन पूर्वावलोकन",
+    "broadcast": "पुष्टि करें और प्रसारित करें"
+  },
+  "_comment": "UNREVIEWED_MACHINE_TRANSLATED_PLACEHOLDER: Automated regional placeholder strings pending formal agronomist validation.",
+  "farmer": {
+    "portalTitle": "पन्नग किसान",
+    "cropStageTracker": "1-टैप फसल स्थिति ट्रैकर",
+    "currentStage": "वर्तमान स्थिति",
+    "advisoriesTitle": "परामर्श एवं चेतावनियाँ",
+    "deliveryPreferences": "वितरण प्राथमिकताएँ",
+    "whatsappConsent": "व्हाट्सएप परामर्श",
+    "smsConsent": "एसएमएस फॉलबैक",
+    "pauseAlerts": "सभी परामर्श रोकें"
+  }
+}

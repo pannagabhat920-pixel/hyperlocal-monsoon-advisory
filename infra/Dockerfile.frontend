@@ -1,0 +1,17 @@
+FROM node:20-slim
+
+# Install pnpm
+RUN npm install -g pnpm
+
+WORKDIR /app
+
+# Copy dependency files
+COPY frontend/package.json frontend/pnpm-lock.yaml* ./
+
+RUN pnpm install
+
+COPY frontend/ .
+
+EXPOSE 3000
+
+CMD ["pnpm", "dev"]

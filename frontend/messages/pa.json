@@ -1,0 +1,41 @@
+{
+  "common": {
+    "title": "ਪੰਨਗ ਮਾਨਸੂਨ ਸਲਾਹ",
+    "subtitle": "ਹਾਈਪਰਲੋਕਲ ਮਾਨਸੂਨ ਭਵਿੱਖਬਾਣੀ ਅਤੇ ਫਸਲ ਸਲਾਹ ਪ੍ਰਣਾਲੀ",
+    "dataHonesty": "ਡੇਟਾ ਇਮਾਨਦਾਰੀ ਸੂਚਨਾ: ਮਾਡਲ ਪਾਈਪਲਾਈਨ ਸਿਮੂਲੇਟਡ ਡੇਟਾ 'ਤੇ ਚੱਲ ਰਹੀ ਹੈ।",
+    "simulated": "ਸਿਮੂਲੇਟਡ",
+    "live": "ਲਾਈਵ",
+    "hindcast": "ਪਿਛਲਾ ਰਿਕਾਰਡ"
+  },
+  "stages": {
+    "not_started": "ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ",
+    "sown": "ਬੀਜਿਆ ਗਿਆ",
+    "vegetative": "ਵਨਸਪਤੀ ਵਾਧਾ",
+    "flowering_podding": "ਫੁੱਲ ਅਤੇ ਫਲੀਆਂ",
+    "harvest_ready": "ਵਾਢੀ ਲਈ ਤਿਆਰ"
+  },
+  "auth": {
+    "enterOtp": "੬-ਅੰਕਾਂ ਦਾ ਓਟੀਪੀ ਦਰਜ ਕਰੋ",
+    "verifyAndEnter": "ਤਸਦੀਕ ਕਰੋ ਅਤੇ ਅੱਗੇ ਵਧੋ",
+    "mobileNumber": "ਮੋਬਾਈਲ ਨੰਬਰ",
+    "sendOtp": "ਐਸਐਮਐਸ ਰਾਹੀਂ ਓਟੀਪੀ ਭੇਜੋ"
+  },
+  "officer": {
+    "portalTitle": "ਖੇਤੀਬਾੜੀ ਵਿਸਥਾਰ ਅਧਿਕਾਰੀ ਪੋਰਟਲ",
+    "queueTitle": "ਬਕਾਇਆ ਖੇਤੀਬਾੜੀ ਸਲਾਹ ਕਤਾਰ",
+    "approveTts": "ਮਨਜ਼ੂਰ ਕਰੋ ਅਤੇ ਆਡੀਓ ਬਣਾਓ",
+    "dryRun": "ਡ੍ਰਾਈ ਰਨ ਝਲਕ",
+    "broadcast": "ਕਿਸਾਨਾਂ ਨੂੰ ਪ੍ਰਸਾਰਿਤ ਕਰੋ"
+  },
+  "_comment": "UNREVIEWED_MACHINE_TRANSLATED_PLACEHOLDER: Automated regional placeholder strings pending formal agronomist validation.",
+  "farmer": {
+    "portalTitle": "ਪੰਨਗਾ ਕਿਸਾਨ",
+    "cropStageTracker": "1-ਟੈਪ ਫ਼ਸਲ ਸਥਿਤੀ ਟਰੈਕਰ",
+    "currentStage": "ਮੌਜੂਦਾ ਸਥਿਤੀ",
+    "advisoriesTitle": "ਸਲਾਹਾਂ ਅਤੇ ਚੇਤਾਵਨੀਆਂ",
+    "deliveryPreferences": "ਡਿਲਿਵਰੀ ਤਰਜੀਹਾਂ",
+    "whatsappConsent": "ਵਟਸਐਪ ਸਲਾਹਾਂ",
+    "smsConsent": "ਐਸਐਮਐਸ ਫਾਲਬੈਕ",
+    "pauseAlerts": "ਸਾਰੀਆਂ ਸਲਾਹਾਂ ਰੋਕੋ"
+  }
+}

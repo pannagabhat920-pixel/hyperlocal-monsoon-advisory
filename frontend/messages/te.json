@@ -1,0 +1,41 @@
+{
+  "common": {
+    "title": "పన్నగ వర్షాకాల సలహా",
+    "subtitle": "అతి-స్థానిక వర్షాకాల అంచనా మరియు వ్యవసాయ సలహాలు",
+    "dataHonesty": "డేటా ప్రామాణికత నోటీసు: మోడల్ సిమ్యులేటెడ్ డేటాతో నడుస్తోంది.",
+    "simulated": "సిమ్యులేటెడ్",
+    "live": "లైవ్",
+    "hindcast": "గత రికార్డులు"
+  },
+  "stages": {
+    "not_started": "ప్రారంభించలేదు",
+    "sown": "విత్తనం నాటారు",
+    "vegetative": "మొక్కల పెరుగుదల",
+    "flowering_podding": "పూత మరియు కాయ దశ",
+    "harvest_ready": "కోతకు సిద్ధం"
+  },
+  "auth": {
+    "enterOtp": "౬-అంకెల ఓటీపీని నమోదు చేయండి",
+    "verifyAndEnter": "ధృవీకరించండి మరియు కొనసాగించండి",
+    "mobileNumber": "మొబైల్ నంబర్",
+    "sendOtp": "ఎస్ఎంఎస్ ద్వారా ఓటీపీ పంపండి"
+  },
+  "officer": {
+    "portalTitle": "వ్యవసాయ విస్తరణ అధికారి పోర్టల్",
+    "queueTitle": "పెండింగ్‌లో ఉన్న వ్యవసాయ సలహాల జాబితా",
+    "approveTts": "ఆమోదించండి & ఆడియో సృష్టించండి",
+    "dryRun": "ప్రివ్యూ",
+    "broadcast": "రైతులకు ప్రసారం చేయండి"
+  },
+  "_comment": "UNREVIEWED_MACHINE_TRANSLATED_PLACEHOLDER: Automated regional placeholder strings pending formal agronomist validation.",
+  "farmer": {
+    "portalTitle": "పన్నగ రైతు",
+    "cropStageTracker": "1-ట్యాప్ పంట దశ ట్రాకర్",
+    "currentStage": "ప్రస్తుత దశ",
+    "advisoriesTitle": "సలహాలు మరియు హెచ్చరికలు",
+    "deliveryPreferences": "డెలివరీ ప్రాధాన్యతలు",
+    "whatsappConsent": "వాట్సాప్ సలహాలు",
+    "smsConsent": "ఎస్ఎంఎస్ ఫాల్‌బ్యాక్",
+    "pauseAlerts": "అన్ని సలహాలను పాజ్ చేయండి"
+  }
+}

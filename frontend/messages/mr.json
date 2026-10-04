@@ -1,0 +1,41 @@
+{
+  "common": {
+    "title": "पन्नग मान्सून सल्ला",
+    "subtitle": "अति-स्थानिक मान्सून अंदाज आणि पीक सल्ला",
+    "dataHonesty": "माहिती पारदर्शकता सूचना: मॉडेल सिम्युलेटेड डेटावर कार्यरत आहे.",
+    "simulated": "सिम्युलेटेड",
+    "live": "थेट (लाईव्ह)",
+    "hindcast": "मागील नोंदी"
+  },
+  "stages": {
+    "not_started": "सुरू झाले नाही",
+    "sown": "पेरणी झाली",
+    "vegetative": "शाकीय वाढ",
+    "flowering_podding": "फुलोरा व शेंगा",
+    "harvest_ready": "कापणीस तयार"
+  },
+  "auth": {
+    "enterOtp": "६-अंकी ओटीपी प्रविष्ट करा",
+    "verifyAndEnter": "पडताळणी करा आणि पुढे जा",
+    "mobileNumber": "मोबाईल क्रमांक",
+    "sendOtp": "एसएमएस द्वारे ओटीपी पाठवा"
+  },
+  "officer": {
+    "portalTitle": "कृषी विस्तार अधिकारी पोर्टल",
+    "queueTitle": "प्रलंबित कृषी सल्ला रांग",
+    "approveTts": "मंजूर करा आणि ऑडिओ तयार करा",
+    "dryRun": "पूर्वावलोकन",
+    "broadcast": "प्रसारित करा"
+  },
+  "_comment": "UNREVIEWED_MACHINE_TRANSLATED_PLACEHOLDER: Automated regional placeholder strings pending formal agronomist validation.",
+  "farmer": {
+    "portalTitle": "पन्नगा शेतकरी",
+    "cropStageTracker": "1-टॅप पीक स्थिती ट्रॅकर",
+    "currentStage": "सध्याची स्थिती",
+    "advisoriesTitle": "सल्लागार आणि सूचना",
+    "deliveryPreferences": "वितरण प्राधान्ये",
+    "whatsappConsent": "व्हॉट्सॲप सल्ला",
+    "smsConsent": "एसएमएस फॉलबॅक",
+    "pauseAlerts": "सर्व सूचना थांबवा"
+  }
+}

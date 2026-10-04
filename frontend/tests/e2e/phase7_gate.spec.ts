@@ -239,6 +239,27 @@ test.describe("Phase 7 Verification: WebGL 3D Smoke, Full-Stack E2E, & Axe Scans
     await expect(trackerLocator).toHaveText("1-ಟ್ಯಾಪ್ ಬೆಳೆ ಹಂತ ಟ್ರ್ಯಾಕರ್");
   });
 
+  test("Login Page: language switcher updates UI text using regional catalogs", async ({ page }) => {
+    await page.goto("/login", { waitUntil: "networkidle" });
+
+    // Initial English text
+    await expect(page.locator("h1")).toHaveText("Pannaga Monsoon Advisory");
+    await expect(page.locator("label[for='phone-input']")).toHaveText("Mobile Number");
+
+    // Switch language to Hindi (hi)
+    const langSelect = page.locator("select[aria-label='Language']");
+    await langSelect.selectOption("hi");
+
+    // Assert that the UI text dynamically updates to the Hindi catalog
+    await expect(page.locator("h1")).toHaveText("पन्नग मानसून परामर्श");
+    await expect(page.locator("label[for='phone-input']")).toHaveText("मोबाइल नंबर");
+
+    // Switch language to Kannada (kn)
+    await langSelect.selectOption("kn");
+    await expect(page.locator("h1")).toHaveText("ಪನ್ನಗ ಮುಂಗಾರು ಕೃಷಿ ಸಲಹೆ");
+    await expect(page.locator("label[for='phone-input']")).toHaveText("ಮೊಬೈಲ್ ಸಂಖ್ಯೆ");
+  });
+
   // ─── 5. Full Axe Accessibility Scan (Including Serious and Contrast) ────────
   test("Axe accessibility audit: map, farmer, officer pages with serious & color-contrast rules", async ({ page }) => {
     // Map Page

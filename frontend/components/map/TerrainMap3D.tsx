@@ -107,7 +107,7 @@ export function TerrainMap3D() {
 
       map.on("load", () => {
         mapInstance.current = map;
-        if (typeof window !== "undefined") {
+        if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
           (window as any).__maplibreMap = map;
         }
 

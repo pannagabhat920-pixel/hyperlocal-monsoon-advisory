@@ -233,7 +233,7 @@ async def check_otp_rate_limit(phone_number: str) -> None:
     Raises HTTP 429 if exceeded.
     Fictitious test numbers (+910000000...) are exempt for automated tests.
     """
-    if phone_number.startswith("+910000000"):
+    if settings.ENV != "production" and phone_number.startswith("+910000000"):
         return
     try:
         r = aioredis.from_url(settings.REDIS_URL, decode_responses=True)

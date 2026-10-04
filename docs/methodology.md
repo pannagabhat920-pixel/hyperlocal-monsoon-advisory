@@ -90,7 +90,7 @@ Advisories are generated in English and localized into 6 regional languages:
 - **Languages:** Hindi (`hi`), Marathi (`mr`), Telugu (`te`), Kannada (`kn`), Punjabi (`pa`), and English (`en`).
 - **Data Integrity Preservation:** Machine translation algorithms are validated against regex checks to ensure numbers, units (e.g. `mm`, `days`, `acres`), and calendar dates remain identical to the approved source.
 - **Extension Officer Review:** Unvetted machine translations are flagged in the Extension Officer UI (`flagged_for_review = True`).
-- **Persistent Bhashini TTS Caching:** Text-to-speech audio is pre-rendered upon officer approval, keyed by deterministic SHA-256 content hashes, written to persistent storage (`/app/media/audio`), and served as static audio files.
+- **Persistent Bhashini TTS Caching:** Text-to-speech audio is pre-rendered upon officer approval, keyed by unguessable HMAC-SHA256 tokens derived from `SECRET_KEY`, written to persistent storage (`/app/media/audio`), and served as static WAV files. In mock/demo mode (prior to live Bhashini API key wiring), a valid 440 Hz synthetic PCM sine wave is generated as an operational audio placeholder.
 
 ---
 

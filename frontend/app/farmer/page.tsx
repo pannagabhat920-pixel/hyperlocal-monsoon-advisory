@@ -483,7 +483,7 @@ export default function FarmerDashboard() {
                     {/* Bhashini Audio Playback Button */}
                     <button
                       type="button"
-                      aria-label={isPlaying ? "Stop advisory audio" : "Listen to advisory in regional language"}
+                      aria-label={isPlaying ? "Stop advisory audio" : "Listen to advisory audio placeholder (440 Hz synthetic tone)"}
                       onClick={() => handlePlayAudio(adv)}
                       className={`flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-semibold shadow transition-all ${
                         isPlaying
@@ -499,7 +499,7 @@ export default function FarmerDashboard() {
                       ) : (
                         <>
                           <Volume2 className="w-3.5 h-3.5" />
-                          <span>Listen</span>
+                          <span>Listen (440Hz Placeholder Tone)</span>
                         </>
                       )}
                     </button>

@@ -2,11 +2,14 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Phone, Lock, ArrowRight, ShieldCheck, CheckCircle2, AlertCircle } from "lucide-react";
+import { Phone, Lock, ArrowRight, ShieldCheck, CheckCircle2, AlertCircle, Globe } from "lucide-react";
 import { api } from "../../lib/api";
+import { getMessages, Locale, LANGUAGES } from "../../lib/i18n";
 
 export default function LoginPage() {
   const router = useRouter();
+  const [lang, setLang] = useState<Locale>("en");
+  const t = getMessages(lang);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [step, setStep] = useState<"PHONE" | "OTP">("PHONE");
@@ -89,14 +92,35 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4 font-sans">
       <div className="bg-slate-900/90 border border-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl space-y-6 backdrop-blur">
-        {/* Brand Header */}
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-sky-600 flex items-center justify-center text-white font-black text-2xl mx-auto shadow-lg shadow-sky-600/30">
-            P
+        {/* Brand Header & Language Switcher */}
+        <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 rounded-xl bg-sky-600 flex items-center justify-center text-white font-black text-lg shadow-md shadow-sky-600/30">
+              P
+            </div>
+            <span className="font-bold text-sm text-white tracking-tight">{t.common.title}</span>
           </div>
-          <h1 className="text-xl font-bold text-white tracking-tight">Pannaga Portal Login</h1>
+          <div className="flex items-center space-x-1.5 bg-slate-950 px-2 py-1 rounded-lg border border-slate-800">
+            <Globe className="w-3.5 h-3.5 text-slate-400" />
+            <select
+              aria-label="Language"
+              value={lang}
+              onChange={(e) => setLang(e.target.value as Locale)}
+              className="bg-transparent text-xs text-slate-300 font-medium focus:outline-none cursor-pointer"
+            >
+              {LANGUAGES.map((l) => (
+                <option key={l.code} value={l.code} className="bg-slate-900 text-white">
+                  {l.label} ({l.code})
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="text-center space-y-1">
+          <h1 className="text-xl font-bold text-white tracking-tight">{t.common.title}</h1>
           <p className="text-xs text-slate-400">
-            Hyperlocal Monsoon Advisory & Crop Decision Support
+            {t.common.subtitle}
           </p>
         </div>
 
@@ -116,7 +140,7 @@ export default function LoginPage() {
           <form onSubmit={handleRequestOtp} className="space-y-4">
             <div>
               <label htmlFor="phone-input" className="block text-xs font-semibold text-slate-300 mb-1.5">
-                Mobile Number
+                {t.auth.mobileNumber}
               </label>
               <div className="relative flex items-center">
                 <span className="absolute left-3 text-xs font-semibold text-slate-500">+91</span>
@@ -176,7 +200,7 @@ export default function LoginPage() {
                 <span>Requesting OTP...</span>
               ) : (
                 <>
-                  <span>Send OTP via SMS</span>
+                  <span>{t.auth.sendOtp}</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -190,7 +214,7 @@ export default function LoginPage() {
             <div>
               <div className="flex items-center justify-between mb-1.5">
                 <label htmlFor="otp-input" className="text-xs font-semibold text-slate-300">
-                  Enter 6-Digit OTP
+                  {t.auth.enterOtp}
                 </label>
                 <button
                   type="button"
@@ -233,7 +257,7 @@ export default function LoginPage() {
               ) : (
                 <>
                   <CheckCircle2 className="w-4 h-4" />
-                  <span>Verify & Enter Dashboard</span>
+                  <span>{t.auth.verifyAndEnter}</span>
                 </>
               )}
             </button>

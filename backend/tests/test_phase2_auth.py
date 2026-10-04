@@ -25,7 +25,7 @@ REDIS_URL = os.environ["REDIS_URL"]
 DEV_OTP = "000000"
 
 # Phone counter — each test gets its own unique number
-_COUNTER = iter(range(93_111_1001, 93_111_9999))
+_COUNTER = iter(range(931_111_0001, 931_119_9999))
 
 
 def fresh_phone() -> str:
@@ -298,3 +298,51 @@ def test_phone_masking():
     assert "0001" in masked
     assert "*" in masked
     assert masked.count("*") >= 3
+
+
+# ─── Production Security & Validation ────────────────────────────────────────
+
+def test_production_phone_format_validation():
+    """In production, Indian numbers must match +91[6-9]XXXXXXXXX; test numbers are rejected."""
+    from app.core import config as cfg
+    from app.api.v1.auth import RequestOTPIn
+    from pydantic import ValidationError
+
+    original = cfg.settings.ENV
+    cfg.settings.ENV = "production"
+    try:
+        # Valid Indian mobile number in production (starts with 6-9)
+        valid = RequestOTPIn(phone_number="+919876543210")
+        assert valid.phone_number == "+919876543210"
+
+        # Fictitious number starting with 0 is rejected in production
+        with pytest.raises(ValidationError, match="Indian mobile numbers must be 10 digits starting with 6-9"):
+            RequestOTPIn(phone_number="+910000000001")
+    finally:
+        cfg.settings.ENV = original
+
+
+@pytest.mark.asyncio(loop_scope="function")
+async def test_production_rate_limit_exemption_disabled():
+    """In production, rate-limit exemption for +910000000xxx is strictly disabled."""
+    from app.core import config as cfg
+    from app.core.security import check_otp_rate_limit
+    import redis.asyncio as aioredis
+    from fastapi import HTTPException
+
+    original = cfg.settings.ENV
+    cfg.settings.ENV = "production"
+    phone = "+910000000999"
+    try:
+        r = aioredis.from_url(cfg.settings.REDIS_URL, decode_responses=True)
+        key = f"otp_rate:{phone}"
+        await r.set(key, "3")  # Max out rate limit
+
+        with pytest.raises(HTTPException) as exc:
+            await check_otp_rate_limit(phone)
+        assert exc.value.status_code == 429
+        await r.delete(key)
+        await r.aclose()
+    finally:
+        cfg.settings.ENV = original
+

@@ -32,24 +32,37 @@ MAX_OTP_ATTEMPTS = 5
 
 # ─── Schemas ─────────────────────────────────────────────────────────────────
 
+def _validate_phone_input(v: str) -> str:
+    import re
+    v = v.strip()
+    if not v.startswith("+"):
+        raise ValueError("Phone number must start with country code, e.g. +91XXXXXXXXXX")
+    digits = v[1:].replace(" ", "")
+    if not digits.isdigit() or len(digits) < 7 or len(digits) > 15:
+        raise ValueError("Invalid phone number format")
+    if settings.ENV == "production" and v.startswith("+91"):
+        if not re.match(r"^\+91[6-9]\d{9}$", v):
+            raise ValueError("In production, Indian mobile numbers must be 10 digits starting with 6-9, e.g. +919876543210")
+    return v
+
+
 class RequestOTPIn(BaseModel):
     phone_number: str
 
     @field_validator("phone_number")
     @classmethod
     def validate_phone(cls, v: str) -> str:
-        v = v.strip()
-        if not v.startswith("+"):
-            raise ValueError("Phone number must start with country code, e.g. +91XXXXXXXXXX")
-        digits = v[1:].replace(" ", "")
-        if not digits.isdigit() or len(digits) < 7 or len(digits) > 15:
-            raise ValueError("Invalid phone number format")
-        return v
+        return _validate_phone_input(v)
 
 
 class VerifyOTPIn(BaseModel):
     phone_number: str
     otp: str
+
+    @field_validator("phone_number")
+    @classmethod
+    def validate_phone(cls, v: str) -> str:
+        return _validate_phone_input(v)
 
 
 class OnboardingIn(BaseModel):
